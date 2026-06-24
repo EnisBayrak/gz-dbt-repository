@@ -1,14 +1,65 @@
 version: 2
 
 sources:
-  - name: raw # dbt içinde çağıracağımız kaynak adı
-    schema: gz_raw_data # BigQuery'deki gerçek Veri Kümesi (Dataset) adı
+  - name: raw
+    schema: gz_raw_data
     tables:
-      - name: sales # dbt içinde çağıracağımız tablo adı
-        identifier: raw_gz_sales # BigQuery'deki gerçek tablo adı
+      # ==========================================
+      # 1. SALES TABLOSU (Satış Verileri & Tazelik Testi)
+      # ==========================================
+      - name: sales
+        identifier: raw_gz_sales
+        description: "Greenweez e-ticaret satış verileri. Her satır bir siparişteki benzersiz bir ürünü temsil eder."
+        
+        
 
+        columns:
+          - name: date_date
+            description: "Satışın gerçekleştiği günün tarihi (YYYY-MM-DD)."
+          - name: orders_id
+            description: "Benzersiz sipariş numarası."
+          - name: pdt_id
+            description: "Benzersiz ürün numarası."
+          - name: revenue
+            description: "Satıştan elde edilen toplam ciro/gelir."
+          - name: quantity
+            description: "Satılan ürün adedi."
+            
+        # Birincil Anahtar Testi (orders_id ve products_id kombinasyonu)
+        tests:
+          - unique:
+              column_name: "orders_id || '-' || pdt_id"
+
+      # ==========================================
+      # 2. PRODUCT TABLOSU (Ürün Kataloğu & Tekli Testler)
+      # ==========================================
       - name: product
         identifier: raw_gz_product
+        description: "Ürün kataloğu ve maliyet bilgileri."
+        columns:
+          - name: products_id
+            description: "Ürünün benzersiz ID'si. Bu tablonun birincil anahtarıdır."
+            tests:
+              - unique
+              - not_null
+          - name: purchSE_PRICE
+            description: "Ürünün tedarik/satın alma fiyatı."
 
+      # ==========================================
+      # 3. SHIP TABLOSU (Kargo Verileri & Tekli Testler)
+      # ==========================================
       - name: ship
         identifier: raw_gz_ship
+        description: "Siparişlerin kargo ve lojistik maliyet verileri."
+        columns:
+          - name: orders_id
+            description: "Siparişin benzersiz ID'si. Bu tablonun birincil anahtarıdır."
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+            description: "Müşteriden tahsil edilen kargo ücreti."
+          - name: logcost
+            description: "Siparişin lojistik operasyon maliyeti."
+          - name: ship_cost
+            description: "Gerçek kargo gönderim maliyeti."
