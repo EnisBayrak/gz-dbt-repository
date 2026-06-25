@@ -63,3 +63,22 @@ sources:
             description: "Siparişin lojistik operasyon maliyeti."
           - name: ship_cost
             description: "Gerçek kargo gönderim maliyeti."
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: "adwords verileri."
+        columns:
+          - name: date_date
+            description: "Tarihi gösterir."
+            
+          - name: paid_source
+            description: "Kaynak ödemesi."
+          - name: campaign_key
+            description: "Campaign anahtarı."
+          - name: camPGN_name
+            description: "Campaign adı."
+          - name: ads_cost
+            description: "Reklam Maliyeti."
+          - name: impression
+            description: "Görüntülenme."
+          - name: click
+            description: "Tıklanma sayısı."
