@@ -1,5 +1,6 @@
 version: 2
 
+
 sources:
   - name: raw
     schema: gz_raw_data
@@ -165,3 +166,50 @@ sources:
             description: "Görüntülenme."
           - name: click
             description: "Tıklanma sayısı."
+
+
+
+
+# Kesinlikle sources: başlığı altında olmamalı!
+models:
+  - name: int_campaigns_day
+    description: "Günlük bazda konsolide edilmiş reklam harcaması raporu."
+    columns:
+      - name: date_date
+        tests:
+          - not_null
+      - name: campaign_name
+        tests:
+          - not_null
+      - name: ads_cost
+        tests:
+          - not_null
+      - name: impression
+        tests:
+          - not_null
+      - name: click
+        tests:
+          - not_null
+
+
+
+  - name: finance_campaigns_day
+    description: "Finans verileri (finance_days) ile günlük reklam kampanya verilerinin (int_campaigns_day) birleştirildiği Mart modelidir. Reklam maliyetleri düşüldükten sonraki net operasyonel marjı (ads_margin) gösterir."
+    columns:
+      - name: date_date
+        description: "Verinin ait olduğu gün (YYYY-MM-DD)"
+        
+
+      - name: ads_margin
+        description: "Net Operasyonel Marj (operational_margin - ads_cost)"
+
+      - name: average_basket
+        description: "O güne ait ortalama sepet tutarı"
+
+      - name: operational_margin
+        description: "Operasyonel Marj (margin + shipping_fee - log_cost - ship_cost)"
+
+      - name: ads_cost
+        description: "O gün harcanan toplam reklam maliyeti"
+
+  
