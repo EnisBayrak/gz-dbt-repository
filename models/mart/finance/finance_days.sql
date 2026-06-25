@@ -1,3 +1,7 @@
+{{ config(
+    materialized='table',
+    schema='finance'
+) }}
 WITH orders_operational AS (
     SELECT * FROM {{ ref('int_orders_operational') }}
 ),
