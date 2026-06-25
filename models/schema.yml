@@ -74,10 +74,16 @@ sources:
             description: "Kaynak ödemesi."
           - name: campaign_key
             description: "Campaign anahtarı."
+            tests:
+              - unique
+              - not_null
           - name: camPGN_name
             description: "Campaign adı."
           - name: ads_cost
             description: "Reklam Maliyeti."
+            tests:
+              - not_null
+              
           - name: impression
             description: "Görüntülenme."
           - name: click
@@ -93,10 +99,16 @@ sources:
             description: "Kaynak ödemesi."
           - name: campaign_key
             description: "Campaign anahtarı."
+            tests:
+              - unique
+              - not_null
           - name: camPGN_name
             description: "Campaign adı."
           - name: ads_cost
             description: "Reklam Maliyeti."
+            tests:
+              - not_null
+              
           - name: impression
             description: "Görüntülenme."
           - name: click
@@ -112,10 +124,18 @@ sources:
             description: "Kaynak ödemesi."
           - name: campaign_key
             description: "Campaign anahtarı."
+            tests:
+              - unique
+              - not_null
+              
+              
           - name: camPGN_name
             description: "Campaign adı."
           - name: ads_cost
             description: "Reklam Maliyeti."
+            tests:
+              - not_null
+              
           - name: impression
             description: "Görüntülenme."
           - name: click
@@ -131,10 +151,16 @@ sources:
             description: "Kaynak ödemesi."
           - name: campaign_key
             description: "Campaign anahtarı."
+            tests:
+              - unique
+              - not_null
           - name: camPGN_name
             description: "Campaign adı."
           - name: ads_cost
             description: "Reklam Maliyeti."
+            tests:
+              - not_null
+              
           - name: impression
             description: "Görüntülenme."
           - name: click
