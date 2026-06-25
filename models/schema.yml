@@ -82,3 +82,60 @@ sources:
             description: "Görüntülenme."
           - name: click
             description: "Tıklanma sayısı."
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: "facebook verileri."
+        columns:
+          - name: date_date
+            description: "Tarihi gösterir."
+            
+          - name: paid_source
+            description: "Kaynak ödemesi."
+          - name: campaign_key
+            description: "Campaign anahtarı."
+          - name: camPGN_name
+            description: "Campaign adı."
+          - name: ads_cost
+            description: "Reklam Maliyeti."
+          - name: impression
+            description: "Görüntülenme."
+          - name: click
+            description: "Tıklanma sayısı."
+      - name: bing
+        identifier: raw_gz_bing
+        description: "bing verileri."
+        columns:
+          - name: date_date
+            description: "Tarihi gösterir."
+            
+          - name: paid_source
+            description: "Kaynak ödemesi."
+          - name: campaign_key
+            description: "Campaign anahtarı."
+          - name: camPGN_name
+            description: "Campaign adı."
+          - name: ads_cost
+            description: "Reklam Maliyeti."
+          - name: impression
+            description: "Görüntülenme."
+          - name: click
+            description: "Tıklanma sayısı."
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: "criteo verileri."
+        columns:
+          - name: date_date
+            description: "Tarihi gösterir."
+            
+          - name: paid_source
+            description: "Kaynak ödemesi."
+          - name: campaign_key
+            description: "Campaign anahtarı."
+          - name: camPGN_name
+            description: "Campaign adı."
+          - name: ads_cost
+            description: "Reklam Maliyeti."
+          - name: impression
+            description: "Görüntülenme."
+          - name: click
+            description: "Tıklanma sayısı."
